@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ravenflight Browser – a fast, private, raven-dark Android browser</title>
 <meta name="description" content="Ravenflight is a fast, private Android web browser with a midnight-dark raven look, on-device ad &amp; tracker blocker, themes, and an optional Grok AI assistant. No account, no analytics.">
-<meta name="theme-color" content="#1a0f33">
+<meta name="theme-color" content="#1a0a2e">
 <link rel="icon" href="images/favicon.ico" sizes="any">
 <link rel="icon" type="image/webp" href="images/favicon-32.webp" sizes="32x32">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.webp">
@@ -20,23 +20,89 @@
 <meta name="twitter:description" content="A fast, private web browser with a midnight-dark raven look for Android.">
 <meta name="twitter:image" content="images/feature-graphic-1024x500.webp">
 <style>
-:root{color-scheme:dark;--bg0:#07050d;--bg1:#1a0f33;--bg2:#3b1f6b;--card:#150f26cc;--border:#2f2350;--text:#ece6ff;--muted:#a99cc9;--accent:#7c4dff;--accent2:#b388ff;--link:#c9a8ff}
+:root{color-scheme:dark;--bg0:#2a0610;--bg1:#1a0a2e;--bg2:#3b1060;--bg3:#6b0010;--bg4:#8a0303;--card:#120a1ef2;--border:#4a2858;--text:#ece6ff;--muted:#c4a8c8;--accent:#9b6dff;--accent2:#d4a8ff;--link:#e0b8ff}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;
-background:radial-gradient(ellipse at 70% 0%,var(--bg2) 0%,var(--bg1) 40%,var(--bg0) 100%) fixed}
-.stars{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;
+background:linear-gradient(180deg,#8a0303 0%,#6b0010 18%,#4a0a28 42%,#2d0a3d 72%,#1a0a2e 100%) fixed}
+
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;background-image:
 radial-gradient(1px 1px at 12% 18%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 33% 9%,#fff6 50%,transparent 51%),
 radial-gradient(1.5px 1.5px at 58% 22%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 81% 12%,#fff7 50%,transparent 51%),
 radial-gradient(1px 1px at 91% 38%,#fff5 50%,transparent 51%),radial-gradient(1.5px 1.5px at 7% 46%,#fff6 50%,transparent 51%),
 radial-gradient(1px 1px at 44% 41%,#fff4 50%,transparent 51%),radial-gradient(1px 1px at 69% 55%,#fff5 50%,transparent 51%),
-radial-gradient(1px 1px at 22% 72%,#fff5 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 68%,#fff6 50%,transparent 51%)}
+radial-gradient(1px 1px at 22% 72%,#fff5 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 68%,#fff6 50%,transparent 51%),
+radial-gradient(1px 1px at 15% 88%,#fff4 50%,transparent 51%),radial-gradient(1px 1px at 52% 82%,#fff5 50%,transparent 51%),
+radial-gradient(1px 1px at 5% 28%,#fffa 50%,transparent 51%),radial-gradient(1.5px 1.5px at 95% 62%,#fff6 50%,transparent 51%),
+radial-gradient(1px 1px at 40% 12%,#fff7 50%,transparent 51%),radial-gradient(1px 1px at 85% 78%,#fff5 50%,transparent 51%)}
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.moon{position:absolute;top:3%;right:3%;width:min(168px,32vw);height:auto;opacity:.95;
+filter:drop-shadow(0 0 22px #f0e6ffdd) drop-shadow(0 0 56px #d4b8ffaa) drop-shadow(0 0 90px #9b6dff66)}
+.moon .moon-disk{fill:#f0e6ff}
+.ravens{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.raven{position:absolute;fill:#0c0614;filter:drop-shadow(0 0 2px #b388ffcc) drop-shadow(0 0 8px #7c4dff55);opacity:.88;will-change:transform;height:auto}
+/* scattered — random across the page, varied sizes, full drift */
+.r1{width:88px;top:526px;left:753px;transform:rotate(-4deg);animation:bob 3.4s ease-in-out infinite;opacity:.72}
+.r2{width:62px;top:84%;left:78%;animation:driftL 60s linear infinite,bob 2.9s ease-in-out infinite;animation-delay:-14s,-.5s;opacity:.55}
+.r3{width:76px;top:62%;left:84%;animation:driftR 46s linear infinite,bob 3.6s ease-in-out infinite;animation-delay:-22s,-1.2s;opacity:.7}
+.r4{width:50px;top:90%;left:40%;animation:driftL 68s linear infinite,bob 2.7s ease-in-out infinite;animation-delay:-9s,-.8s;opacity:.48}
+.r5{width:72px;top:8%;left:8%;animation:driftR 54s linear infinite,bob 3.2s ease-in-out infinite;animation-delay:-30s,-1.5s;opacity:.68}
+/* flock toward moon */
+.rf2{width:74px;top:44%;left:16%;transform:rotate(-8deg);animation:toMoon2 36s linear infinite,bob 3.3s ease-in-out infinite;animation-delay:-8s,-.4s;opacity:.78}
+.rf3{width:58px;top:30%;left:36%;transform:rotate(-12deg);animation:toMoon3 32s linear infinite,bob 2.8s ease-in-out infinite;animation-delay:-16s,-1s;opacity:.74}
+.rf4{width:46px;top:18%;left:52%;transform:rotate(-6deg);animation:toMoon4 28s linear infinite,bob 3.5s ease-in-out infinite;animation-delay:-6s,-.7s;opacity:.7}
+/* extra scatter to replace removed flock birds — keep the random density */
+.r6{width:54px;top:22%;left:72%;animation:driftL 58s linear infinite,bob 3.1s ease-in-out infinite;animation-delay:-18s,-.9s;opacity:.6}
+.r7{width:51px;top:calc(3% + 52px);right:calc(3% - 4px);left:auto;transform:rotate(-10deg);animation:bob 2.8s ease-in-out infinite;opacity:.75}
+/* parked small ravens at Jesse dots */
+.r8{width:42px;top:543px;left:472px;transform:rotate(3deg);animation:bob 3.1s ease-in-out infinite;animation-delay:-.6s;opacity:.62}
+.r9{width:34px;top:703px;left:23px;transform:rotate(-6deg);animation:bob 2.7s ease-in-out infinite;animation-delay:-1.3s;opacity:.55}
+@keyframes driftR{
+  0%{transform:translate3d(0,0,0) rotate(-4deg)}
+  25%{transform:translate3d(18vw,-6px,0) rotate(2deg)}
+  50%{transform:translate3d(40vw,8px,0) rotate(-3deg)}
+  75%{transform:translate3d(62vw,-4px,0) rotate(2deg)}
+  100%{transform:translate3d(105vw,4px,0) rotate(-2deg)}
+}
+@keyframes driftL{
+  0%{transform:translate3d(0,0,0) rotate(3deg)}
+  25%{transform:translate3d(-18vw,6px,0) rotate(-2deg)}
+  50%{transform:translate3d(-40vw,-8px,0) rotate(2deg)}
+  75%{transform:translate3d(-62vw,4px,0) rotate(-1deg)}
+  100%{transform:translate3d(-105vw,-4px,0) rotate(2deg)}
+}
+/* toward moon; scale never below ~0.78 so silhouette never blobs */
+@keyframes toMoon2{
+  0%{transform:translate3d(0,0,0) rotate(-8deg) scale(1)}
+  100%{transform:translate3d(42vw,-36vh,0) rotate(-8deg) scale(.78)}
+}
+@keyframes toMoon3{
+  0%{transform:translate3d(0,0,0) rotate(-12deg) scale(1)}
+  100%{transform:translate3d(30vw,-28vh,0) rotate(-12deg) scale(.8)}
+}
+@keyframes toMoon4{
+  0%{transform:translate3d(0,0,0) rotate(-6deg) scale(1)}
+  100%{transform:translate3d(20vw,-18vh,0) rotate(-6deg) scale(.82)}
+}
+@keyframes bob{
+  0%,100%{margin-top:0}
+  50%{margin-top:-4px}
+}
+@media (max-width:720px){
+  .r1{width:66px;top:352px;left:319px}.r2{width:46px}.r3{width:56px}.r4{width:38px}.r5{width:52px}
+  .r6{width:42px}.r7{width:38px;top:calc(4% + 33px);right:calc(2% - 5px)}.r8{width:32px;top:365px;left:32px}.r9{width:26px;top:524px;left:-1px}
+  .rf2{width:56px}.rf3{width:44px}.rf4{width:36px}
+  .moon{width:min(112px,30vw);top:4%;right:2%}
+}
+@media (prefers-reduced-motion:reduce){
+  .raven{animation:none!important}
+}
 .site-header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:960px;margin:0 auto;padding:14px 20px}
 .brand{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:650;letter-spacing:.02em}
 .brand img{width:36px;height:36px;border-radius:50%;border:1px solid #7c4dff88}
 .nav{display:flex;gap:4px;flex-wrap:wrap}
 .nav a{color:#d6cdef;text-decoration:none;padding:8px 12px;border-radius:999px;font-size:.95rem}
-.nav a:hover,.nav a[aria-current="page"]{background:#24183fcc;color:#fff}
+.nav a:hover,.nav a[aria-current="page"]{background:#3a1538cc;color:#fff}
 main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:28px 20px 40px}
 .hero{text-align:center;padding:12px 0 8px}
 .hero-banner{display:block;width:min(100%,720px);height:auto;margin:0 auto 22px;border-radius:16px;border:1px solid var(--border);box-shadow:0 12px 40px #0006}
@@ -72,6 +138,32 @@ a{color:var(--link)}
 </head>
 <body>
 <div class="stars" aria-hidden="true"></div>
+<div class="sky" aria-hidden="true">
+<svg class="moon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="crescentMask">
+      <rect width="100" height="100" fill="#fff"/>
+      <circle cx="59" cy="44" r="34" fill="#000"/>
+    </mask>
+  </defs>
+  <circle class="moon-disk" cx="46" cy="54" r="40" mask="url(#crescentMask)"/>
+</svg>
+</div>
+<div class="ravens" aria-hidden="true">
+<svg class="raven r1" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r2" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r3" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r4" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r5" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r6" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r7" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven rf2" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven rf3" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven rf4" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r8" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r9" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+</div>
+
 <header class="site-header">
   <a class="brand" href="index.html">
     <img src="images/icon-512.webp" width="36" height="36" alt="">
@@ -118,7 +210,7 @@ a{color:var(--link)}
       <a class="btn" href="mailto:rainesjesse617@gmail.com?subject=Ravenflight%20tester">Join the beta</a>
       <p class="cta-note">Coming to Google Play. Want to help test it early? Email me and I&rsquo;ll add you to the closed test.</p>
     </div>
-    <p class="meta-line">Android &middot; <code style="background:#21163d;padding:1px 6px;border-radius:4px;font-size:.9em">com.ravenflight.browser</code> &middot; v1.1.6 (closed testing) &middot; Default search: Google</p>
+    <p class="meta-line">Android &middot; <code style="background:#3a1528;padding:1px 6px;border-radius:4px;font-size:.9em">com.ravenflight.browser</code> &middot; v1.1.6 (closed testing) &middot; Default search: Google</p>
   </section>
 
   <section aria-labelledby="features-heading">
