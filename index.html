@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ravenflight Browser – a fast, private, raven-dark Android browser</title>
+<meta name="description" content="Ravenflight is a fast, private Android web browser with a midnight-dark raven look, on-device ad &amp; tracker blocker, themes, and an optional Grok AI assistant. No account, no analytics.">
+<meta name="theme-color" content="#1a0f33">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/webp" href="images/favicon-32.webp" sizes="32x32">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.webp">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ravenflight Browser">
+<meta property="og:description" content="A fast, private web browser with a midnight-dark raven look for Android.">
+<meta property="og:image" content="images/feature-graphic-1024x500.webp">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ravenflight Browser">
+<meta name="twitter:description" content="A fast, private web browser with a midnight-dark raven look for Android.">
+<meta name="twitter:image" content="images/feature-graphic-1024x500.webp">
+<style>
+:root{color-scheme:dark;--bg0:#07050d;--bg1:#1a0f33;--bg2:#3b1f6b;--card:#150f26cc;--border:#2f2350;--text:#ece6ff;--muted:#a99cc9;--accent:#7c4dff;--accent2:#b388ff;--link:#c9a8ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;
+background:radial-gradient(ellipse at 70% 0%,var(--bg2) 0%,var(--bg1) 40%,var(--bg0) 100%) fixed}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:
+radial-gradient(1px 1px at 12% 18%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 33% 9%,#fff6 50%,transparent 51%),
+radial-gradient(1.5px 1.5px at 58% 22%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 81% 12%,#fff7 50%,transparent 51%),
+radial-gradient(1px 1px at 91% 38%,#fff5 50%,transparent 51%),radial-gradient(1.5px 1.5px at 7% 46%,#fff6 50%,transparent 51%),
+radial-gradient(1px 1px at 44% 41%,#fff4 50%,transparent 51%),radial-gradient(1px 1px at 69% 55%,#fff5 50%,transparent 51%),
+radial-gradient(1px 1px at 22% 72%,#fff5 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 68%,#fff6 50%,transparent 51%)}
+.site-header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:960px;margin:0 auto;padding:14px 20px}
+.brand{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:650;letter-spacing:.02em}
+.brand img{width:36px;height:36px;border-radius:50%;border:1px solid #7c4dff88}
+.nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav a{color:#d6cdef;text-decoration:none;padding:8px 12px;border-radius:999px;font-size:.95rem}
+.nav a:hover,.nav a[aria-current="page"]{background:#24183fcc;color:#fff}
+main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:28px 20px 40px}
+.hero{text-align:center;padding:12px 0 8px}
+.hero-banner{display:block;width:min(100%,720px);height:auto;margin:0 auto 22px;border-radius:16px;border:1px solid var(--border);box-shadow:0 12px 40px #0006}
+.logo-svg{display:block;margin:0 auto 8px}
+h1{font-size:clamp(2.1rem,6vw,3.2rem);margin:8px 0 6px;letter-spacing:.02em;color:#d9c8ff}
+.tag{font-size:clamp(1.05rem,2.5vw,1.2rem);color:#c3b4e8;margin:0 auto 18px;max-width:36rem}
+.intro{max-width:40rem;margin:0 auto 22px;color:#d6cdef;font-size:1.02rem}
+.cta{margin:8px 0 6px}
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:650;box-shadow:0 6px 24px #7c4dff44}
+.btn:hover{background:#9670ff}
+.cta-note{font-size:.92rem;color:var(--muted);margin:10px 0 0}
+.meta-line{font-size:.88rem;color:#8f83ad;margin:18px 0 0}
+section{margin:42px 0}
+section>h2{font-size:1.35rem;color:var(--accent2);text-align:center;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+.card h3{font-size:1.02rem;margin:0 0 6px;color:var(--accent2)}
+.card p{margin:0;font-size:.95rem;color:#d6cdef}
+.shots-wrap{margin:0 -20px;padding:0 20px}
+.shots{display:flex;gap:14px;overflow-x:auto;padding:8px 4px 18px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-color:#3b2a66 transparent}
+.shots::-webkit-scrollbar{height:8px}
+.shots::-webkit-scrollbar-thumb{background:#3b2a66;border-radius:999px}
+.shot{flex:0 0 auto;scroll-snap-align:start;width:min(220px,72vw)}
+.shot img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--border);box-shadow:0 10px 28px #0007;background:#0b0814}
+.shot figcaption{font-size:.82rem;color:var(--muted);text-align:center;margin-top:8px}
+a{color:var(--link)}
+.site-footer{position:relative;z-index:1;text-align:center;font-size:.9rem;color:#8f83ad;padding:8px 20px 40px;max-width:720px;margin:0 auto}
+.site-footer p{margin:0 0 10px}
+@media (min-width:720px){
+  .shot{width:240px}
+}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <img src="images/icon-512.webp" width="36" height="36" alt="">
+    <span>Ravenflight</span>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+</header>
+<main>
+  <section class="hero" aria-labelledby="title">
+    <img class="hero-banner" src="images/feature-graphic-1024x500.webp" width="1024" height="500" alt="Ravenflight Browser – midnight raven banner">
+    <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120" role="img" aria-label="Ravenflight raven logo">
+      <defs>
+        <radialGradient id="bg" cx="50%" cy="35%" r="70%">
+          <stop offset="0%" stop-color="#3b1f6b"/>
+          <stop offset="55%" stop-color="#1a0f33"/>
+          <stop offset="100%" stop-color="#07050d"/>
+        </radialGradient>
+        <linearGradient id="rv" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0b0812"/>
+          <stop offset="100%" stop-color="#000000"/>
+        </linearGradient>
+      </defs>
+      <circle cx="256" cy="256" r="248" fill="url(#bg)"/>
+      <circle cx="256" cy="256" r="244" fill="none" stroke="#7c4dff" stroke-opacity="0.55" stroke-width="6"/>
+      <mask id="moonmask"><rect width="512" height="512" fill="#fff"/><circle cx="376" cy="134" r="54" fill="#000"/></mask>
+      <circle cx="352" cy="150" r="58" fill="#cbb8ff" fill-opacity="0.9" mask="url(#moonmask)"/>
+      <g fill="url(#rv)" stroke="#b39ddb" stroke-opacity="0.35" stroke-width="2" stroke-linejoin="round">
+        <path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/>
+        <path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/>
+        <path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/>
+        <path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/>
+        <path d="M250 200 L 256 180 L 262 200 Z"/>
+      </g>
+      <circle cx="251" cy="206" r="2.6" fill="#b388ff"/>
+      <circle cx="261" cy="206" r="2.6" fill="#b388ff"/>
+    </svg>
+    <h1 id="title">Ravenflight Browser</h1>
+    <p class="tag">A fast, private web browser with a midnight-dark raven look.</p>
+    <p class="intro">Ravenflight keeps your browsing on your device, blocks the ads and trackers that slow pages down, and lets you style the browser your way. No account, no sign-up, and no analytics.</p>
+    <div class="cta">
+      <a class="btn" href="mailto:rainesjesse617@gmail.com?subject=Ravenflight%20tester">Join the beta</a>
+      <p class="cta-note">Coming to Google Play. Want to help test it early? Email me and I&rsquo;ll add you to the closed test.</p>
+    </div>
+    <p class="meta-line">Android &middot; <code style="background:#21163d;padding:1px 6px;border-radius:4px;font-size:.9em">com.ravenflight.browser</code> &middot; v1.1.6 (closed testing) &middot; Default search: Google</p>
+  </section>
+
+  <section aria-labelledby="features-heading">
+    <h2 id="features-heading">What you get</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Ad &amp; tracker blocker</h3>
+        <p>Blocks about 350 known ad and tracking domains, right on your device. Tap the shield to allow ads on sites you want to support.</p>
+      </article>
+      <article class="card">
+        <h3>News on your home page</h3>
+        <p>Headline cards with each story&rsquo;s own picture, below your shortcuts. You can turn the feed off in Settings.</p>
+      </article>
+      <article class="card">
+        <h3>Private tabs</h3>
+        <p>Browse without saving history. Private tabs wipe their cookies when you close them.</p>
+      </article>
+      <article class="card">
+        <h3>Dark mode for websites</h3>
+        <p>Darken bright pages: Off, On, or Follow system.</p>
+      </article>
+      <article class="card">
+        <h3>Raven themes and wallpapers</h3>
+        <p>Four free themes, six premium raven themes ($0.99 each), night-sky wallpapers, or your own photo.</p>
+      </article>
+      <article class="card">
+        <h3>Grok AI assistant (optional)</h3>
+        <p>Chat with Grok or ask about the page you&rsquo;re reading, using your own xAI key. Nothing is sent unless you use it.</p>
+      </article>
+      <article class="card">
+        <h3>Easy VPN access</h3>
+        <p>Open the free Proton VPN app straight from the menu.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="shots-heading">
+    <h2 id="shots-heading">Screenshots</h2>
+    <div class="shots-wrap">
+      <div class="shots" tabindex="0" role="region" aria-label="App screenshots">
+        <figure class="shot">
+          <img src="images/01-start-page.webp" width="720" height="1280" alt="Ravenflight start page with shortcuts and raven wallpaper" loading="lazy" decoding="async">
+          <figcaption>Start page</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/feed-preview.webp" width="1400" height="1163" alt="News feed preview with headline cards" loading="lazy" decoding="async">
+          <figcaption>News feed</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/02-themes.webp" width="720" height="1280" alt="Raven theme picker" loading="lazy" decoding="async">
+          <figcaption>Themes</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/03-blocker.webp" width="720" height="1280" alt="Ad and tracker blocker shield" loading="lazy" decoding="async">
+          <figcaption>Ad blocker</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/04-dark-mode.webp" width="720" height="1280" alt="Website dark mode setting" loading="lazy" decoding="async">
+          <figcaption>Dark mode</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/05-grok-chat.webp" width="720" height="1280" alt="Optional Grok AI chat assistant" loading="lazy" decoding="async">
+          <figcaption>Grok chat</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <p>Made by Jesse Raines, an independent developer, in Reno, NV. Questions or bug reports: <a href="mailto:rainesjesse617@gmail.com">rainesjesse617@gmail.com</a></p>
+  <p>&copy; 2026 Jesse Raines &middot; Ravenflight &middot; <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+</body>
+</html>
