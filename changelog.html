@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ravenflight Browser – Changelog</title>
+<meta name="description" content="What's new in Ravenflight, a raven-themed browser for Android and Linux. Newest changes first.">
+<meta name="theme-color" content="#1a0a2e">
+<link rel="canonical" href="https://applegate5759.github.io/Ravenflight-/changelog.html">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/webp" href="images/favicon-32.webp" sizes="32x32">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.webp">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ravenflight">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://applegate5759.github.io/Ravenflight-/changelog.html">
+<meta property="og:title" content="Ravenflight Browser – Changelog">
+<meta property="og:description" content="What's new in Ravenflight for Android and Linux.">
+<meta property="og:image" content="https://applegate5759.github.io/Ravenflight-/images/feature-graphic-1024x500.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ravenflight Browser – Changelog">
+<meta name="twitter:description" content="What's new in Ravenflight for Android and Linux.">
+<meta name="twitter:image" content="https://applegate5759.github.io/Ravenflight-/images/feature-graphic-1024x500.webp">
+<style>
+:root{color-scheme:dark;--bg0:#2a0610;--bg1:#1a0a2e;--bg2:#3b1060;--bg3:#6b0010;--bg4:#8a0303;--card:#120a1ef2;--border:#4a2858;--text:#ece6ff;--accent2:#d4a8ff;--link:#e0b8ff}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;
+background:linear-gradient(180deg,#8a0303 0%,#6b0010 18%,#4a0a28 42%,#2d0a3d 72%,#1a0a2e 100%) fixed}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;background-image:
+radial-gradient(1px 1px at 12% 18%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 33% 9%,#fff6 50%,transparent 51%),
+radial-gradient(1.5px 1.5px at 58% 22%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 81% 12%,#fff7 50%,transparent 51%),
+radial-gradient(1px 1px at 91% 38%,#fff5 50%,transparent 51%),radial-gradient(1.5px 1.5px at 7% 46%,#fff6 50%,transparent 51%),
+radial-gradient(1px 1px at 44% 41%,#fff4 50%,transparent 51%),radial-gradient(1px 1px at 69% 55%,#fff5 50%,transparent 51%),
+radial-gradient(1px 1px at 22% 72%,#fff5 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 68%,#fff6 50%,transparent 51%),
+radial-gradient(1px 1px at 15% 88%,#fff4 50%,transparent 51%),radial-gradient(1px 1px at 52% 82%,#fff5 50%,transparent 51%),
+radial-gradient(1px 1px at 5% 28%,#fffa 50%,transparent 51%),radial-gradient(1.5px 1.5px at 95% 62%,#fff6 50%,transparent 51%),
+radial-gradient(1px 1px at 40% 12%,#fff7 50%,transparent 51%),radial-gradient(1px 1px at 85% 78%,#fff5 50%,transparent 51%)}
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.moon{position:absolute;top:3%;right:3%;width:min(168px,32vw);height:auto;opacity:.95;
+filter:drop-shadow(0 0 22px #f0e6ffdd) drop-shadow(0 0 56px #d4b8ffaa) drop-shadow(0 0 90px #9b6dff66)}
+.moon .moon-disk{fill:#f0e6ff}
+.ravens{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.raven{position:absolute;fill:#0c0614;filter:drop-shadow(0 0 2px #b388ffcc) drop-shadow(0 0 8px #7c4dff55);opacity:.88;will-change:transform;height:auto}
+/* scattered — random across the page, varied sizes, full drift */
+.r1{width:88px;top:526px;left:753px;transform:rotate(-4deg);animation:bob 3.4s ease-in-out infinite;opacity:.72}
+.r2{width:62px;top:84%;left:78%;animation:driftL 60s linear infinite,bob 2.9s ease-in-out infinite;animation-delay:-14s,-.5s;opacity:.55}
+.r3{width:76px;top:62%;left:84%;animation:driftR 46s linear infinite,bob 3.6s ease-in-out infinite;animation-delay:-22s,-1.2s;opacity:.7}
+.r4{width:50px;top:90%;left:40%;animation:driftL 68s linear infinite,bob 2.7s ease-in-out infinite;animation-delay:-9s,-.8s;opacity:.48}
+.r5{width:72px;top:8%;left:8%;animation:driftR 54s linear infinite,bob 3.2s ease-in-out infinite;animation-delay:-30s,-1.5s;opacity:.68}
+/* flock toward moon */
+.rf2{width:74px;top:44%;left:16%;transform:rotate(-8deg);animation:toMoon2 36s linear infinite,bob 3.3s ease-in-out infinite;animation-delay:-8s,-.4s;opacity:.78}
+.rf3{width:58px;top:30%;left:36%;transform:rotate(-12deg);animation:toMoon3 32s linear infinite,bob 2.8s ease-in-out infinite;animation-delay:-16s,-1s;opacity:.74}
+.rf4{width:46px;top:18%;left:52%;transform:rotate(-6deg);animation:toMoon4 28s linear infinite,bob 3.5s ease-in-out infinite;animation-delay:-6s,-.7s;opacity:.7}
+/* extra scatter to replace removed flock birds — keep the random density */
+.r6{width:54px;top:22%;left:72%;animation:driftL 58s linear infinite,bob 3.1s ease-in-out infinite;animation-delay:-18s,-.9s;opacity:.6}
+.r7{width:51px;top:calc(3% + 52px);right:calc(3% - 4px);left:auto;transform:rotate(-10deg);animation:bob 2.8s ease-in-out infinite;opacity:.75}
+/* parked small ravens at Jesse dots */
+.r8{width:42px;top:543px;left:472px;transform:rotate(3deg);animation:bob 3.1s ease-in-out infinite;animation-delay:-.6s;opacity:.62}
+.r9{width:34px;top:703px;left:23px;transform:rotate(-6deg);animation:bob 2.7s ease-in-out infinite;animation-delay:-1.3s;opacity:.55}
+@keyframes driftR{
+  0%{transform:translate3d(0,0,0) rotate(-4deg)}
+  25%{transform:translate3d(18vw,-6px,0) rotate(2deg)}
+  50%{transform:translate3d(40vw,8px,0) rotate(-3deg)}
+  75%{transform:translate3d(62vw,-4px,0) rotate(2deg)}
+  100%{transform:translate3d(105vw,4px,0) rotate(-2deg)}
+}
+@keyframes driftL{
+  0%{transform:translate3d(0,0,0) rotate(3deg)}
+  25%{transform:translate3d(-18vw,6px,0) rotate(-2deg)}
+  50%{transform:translate3d(-40vw,-8px,0) rotate(2deg)}
+  75%{transform:translate3d(-62vw,4px,0) rotate(-1deg)}
+  100%{transform:translate3d(-105vw,-4px,0) rotate(2deg)}
+}
+/* toward moon; scale never below ~0.78 so silhouette never blobs */
+@keyframes toMoon2{
+  0%{transform:translate3d(0,0,0) rotate(-8deg) scale(1)}
+  100%{transform:translate3d(42vw,-36vh,0) rotate(-8deg) scale(.78)}
+}
+@keyframes toMoon3{
+  0%{transform:translate3d(0,0,0) rotate(-12deg) scale(1)}
+  100%{transform:translate3d(30vw,-28vh,0) rotate(-12deg) scale(.8)}
+}
+@keyframes toMoon4{
+  0%{transform:translate3d(0,0,0) rotate(-6deg) scale(1)}
+  100%{transform:translate3d(20vw,-18vh,0) rotate(-6deg) scale(.82)}
+}
+@keyframes bob{
+  0%,100%{margin-top:0}
+  50%{margin-top:-4px}
+}
+@media (max-width:720px){
+  .r1{width:66px;top:352px;left:319px}.r2{width:46px}.r3{width:56px}.r4{width:38px}.r5{width:52px}
+  .r6{width:42px}.r7{width:38px;top:calc(4% + 33px);right:calc(2% - 5px)}.r8{width:32px;top:365px;left:32px}.r9{width:26px;top:524px;left:-1px}
+  .rf2{width:56px}.rf3{width:44px}.rf4{width:36px}
+  .moon{width:min(112px,30vw);top:4%;right:2%}
+}
+@media (prefers-reduced-motion:reduce){
+  .raven{animation:none!important}
+}
+.site-header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 20px}
+.brand{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:650;letter-spacing:.02em}
+.brand img{width:36px;height:36px;border-radius:50%;border:1px solid #7c4dff88}
+.nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav a{color:#d6cdef;text-decoration:none;padding:8px 12px;border-radius:999px;font-size:.95rem}
+.nav a:hover,.nav a[aria-current="page"]{background:#3a1538cc;color:#fff}
+main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:20px 20px 48px}
+h1,h2{color:var(--accent2);line-height:1.25}
+h1{font-size:clamp(1.55rem,4vw,1.9rem);margin:8px 0 16px}
+h2{font-size:1.2rem;margin:2rem 0 10px;border-bottom:1px solid #4a2858;padding-bottom:4px}
+a{color:var(--link)}
+code{background:#3a1528;padding:1px 5px;border-radius:4px;font-size:.92em}
+.meta{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px}
+.back{display:inline-block;margin-bottom:12px;text-decoration:none}
+.release{margin:0 0 8px}
+.release time{font-weight:500;font-size:.82rem;color:#c4a8c8;margin-left:.35rem}
+.folded{color:#c4a8c8;margin:-4px 0 8px}
+.site-footer{position:relative;z-index:1;text-align:center;font-size:.9rem;color:#8f83ad;padding:8px 20px 40px}
+ul{padding-left:1.2em}
+li{margin:0 0 8px}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+<div class="sky" aria-hidden="true">
+<svg class="moon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="crescentMask">
+      <rect width="100" height="100" fill="#fff"/>
+      <circle cx="59" cy="44" r="34" fill="#000"/>
+    </mask>
+  </defs>
+  <circle class="moon-disk" cx="46" cy="54" r="40" mask="url(#crescentMask)"/>
+</svg>
+</div>
+<div class="ravens" aria-hidden="true">
+<svg class="raven r1" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r2" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r3" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r4" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r5" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r6" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r7" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven rf2" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven rf3" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven rf4" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r8" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 236 C 228 214, 190 186, 150 168 C 120 156, 92 150, 62 152 C 84 162, 100 170, 112 182 L 92 186 C 108 192, 122 200, 132 210 L 112 216 C 130 222, 146 230, 158 240 L 140 248 C 160 252, 180 258, 196 268 L 182 278 C 204 280, 222 284, 238 292 Z"/><path d="M256 236 C 284 214, 322 186, 362 168 C 392 156, 420 150, 450 152 C 428 162, 412 170, 400 182 L 420 186 C 404 192, 390 200, 380 210 L 400 216 C 382 222, 366 230, 354 240 L 372 248 C 352 252, 332 258, 316 268 L 330 278 C 308 280, 290 284, 274 292 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+<svg class="raven r9" viewBox="50 170 412 240" xmlns="http://www.w3.org/2000/svg"><path d="M256 240 C 230 224, 194 200, 158 184 C 128 172, 96 166, 64 170 C 86 180, 102 188, 114 200 L 94 204 C 110 210, 124 218, 134 228 L 114 234 C 132 240, 148 248, 160 258 L 142 266 C 162 270, 180 276, 196 286 L 182 296 C 204 298, 222 302, 238 310 Z"/><path d="M256 240 C 282 224, 318 200, 354 184 C 384 172, 416 166, 448 170 C 426 180, 410 188, 398 200 L 418 204 C 402 210, 388 218, 378 228 L 398 234 C 380 240, 364 248, 352 258 L 370 266 C 350 270, 332 276, 316 286 L 330 296 C 308 298, 290 302, 274 310 Z"/><path d="M256 214 C 276 214, 284 236, 280 262 C 278 290, 272 318, 268 336 L 292 380 L 268 370 L 256 392 L 244 370 L 220 380 L 244 336 C 240 318, 234 290, 232 262 C 228 236, 236 214, 256 214 Z"/><path d="M246 214 C 246 196, 266 196, 266 214 L 256 236 Z"/><path d="M250 200 L 256 180 L 262 200 Z"/></svg>
+</div>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <img src="images/icon-512.webp" width="36" height="36" alt="">
+    <span>Ravenflight</span>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="changelog.html" aria-current="page">Changelog</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+</header>
+<main>
+<a class="back" href="index.html">&larr; Ravenflight home</a>
+<h1>Changelog</h1>
+<p>What&rsquo;s new in Ravenflight, newest first. Versions 1.1.3 and 1.1.4 were folded into 1.1.5 and were not published on their own.</p>
+
+<article class="release">
+<h2>1.1.15 for Linux <time datetime="2026-11-16">Nov 16, 2026</time></h2>
+<ul>
+<li>The Linux app catches up with Android 1.1.15.</li>
+<li>Google is the default search. If you never chose one, an older DuckDuckGo default moves to Google. A choice you already made stays.</li>
+<li>Gemini is the default AI assistant, and Grok is still an option. You bring your own key, and it is stored securely on your computer.</li>
+<li>The start page can show a Google News feed, with each story&rsquo;s picture. Turn it off in Settings. It never appears in private tabs.</li>
+<li>One top bar: back, forward, home, the address field, reload, the AI button, and the menu. There is no bottom bar.</li>
+<li>A present for GNU/FOSS: on Linux, all six premium raven themes are free. A one-time note explains the gift, a penguin sits beside it on the theme picker, and each premium theme is marked free on Linux. On Windows and macOS those themes are listed as coming soon. The penguin is Larry Ewing&rsquo;s Tux, with thanks to lewing@isc.tamu.edu and the GIMP.</li>
+<li>Linux downloads are an AppImage and a .deb, with a snap as well.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.15 for Android <time datetime="2026-11-14">Nov 14, 2026</time></h2>
+<ul>
+<li><strong>Gilded Raven is free through April 1, 2027</strong> (your phone&rsquo;s local time). Settings shows &ldquo;Free until Apr 1, 2027&rdquo; instead of a price while the offer lasts. From April 2, 2027 it locks again unless you bought it or redeemed a code. A purchase or redeemed code keeps the theme for good. If you are still using Gilded when the offer ends and you don&rsquo;t own it, the browser returns to the default theme.</li>
+<li>Pages that are not encrypted are marked <strong>Not secure</strong> in the address bar. News and site icons are loaded only over HTTPS. Your AI keys stay encrypted on the device, cloud backup stays off, and moving to a new phone does not copy the app&rsquo;s saved settings or files.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.14 for Android <time datetime="2026-11-14">Nov 14, 2026</time></h2>
+<ul>
+<li>Premium themes can be bought in the app: Gilded Raven, Blood Moon Raven, Midnight Murder, Frost Raven, Ember Raven, and Emerald Omen. Buying one unlocks that theme, and purchases are restored when you open the app.</li>
+<li>Redeem a promo code from the theme screen. Google Play applies the code. A code you redeem outside the app is picked up the next time you open Ravenflight.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.13 for Android <time datetime="2026-11-10">Nov 10, 2026</time></h2>
+<ul>
+<li><strong>Google Gemini is the default AI assistant</strong>, with xAI Grok as an option. Choose either one in Settings.</li>
+<li>Add your own Gemini key or your own Grok key. Both are stored encrypted on your device.</li>
+<li>Chat, ask about the page you are reading, clear, stop, and report all work with whichever assistant you picked. The panel title follows that choice.</li>
+<li>If you never chose an assistant, you start on Gemini. A Grok key you already saved is kept, and switching back to Grok uses it right away.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.12 for Android <time datetime="2026-11-02">Nov 2, 2026</time></h2>
+<ul>
+<li>Premium theme purchases are checked with Google Play before a theme unlocks.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.11 for Android <time datetime="2026-10-31">Oct 31, 2026</time></h2>
+<ul>
+<li>Tighter protection while you browse. Risky links opened by a web page are blocked, mixed insecure content is blocked, and the address bar only accepts normal web addresses.</li>
+<li>Downloads can&rsquo;t disguise their file names, and downloaded apps are not opened automatically.</li>
+<li>A site must ask before it uses the camera or microphone. Google&rsquo;s Safe Browsing stays on. The web engine itself still updates through Google Play.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.10 for Android <time datetime="2026-10-30">Oct 30, 2026</time></h2>
+<ul>
+<li>Tapping a bookmark or a history item opens that page.</li>
+<li>Bookmarks and History in Settings open the same lists.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.9 for Android <time datetime="2026-10-30">Oct 30, 2026</time></h2>
+<ul>
+<li>Add a bookmark from the Bookmarks screen, with a name and address. Saving a page you already bookmarked updates its name. Long-press a bookmark to edit or delete it.</li>
+<li>Bookmark this page from the menu still works.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.8 for Android <time datetime="2026-10-30">Oct 30, 2026</time></h2>
+<ul>
+<li>The tab switcher sits clear of the status bar, so its buttons are easy to tap. Each card shows the page picture on top and the title underneath.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.7 for Android <time datetime="2026-10-30">Oct 30, 2026</time></h2>
+<ul>
+<li>The tab button opens a full-screen grid of your tabs. Each card shows a picture of the page, its icon, the title, and a close button. Swipe a card sideways to close it.</li>
+<li>From the switcher you can close all tabs, open a new tab, open a private tab, or tap Done. Private tabs are marked. New tab and Private tab in the menu still work.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.6 for Android <time datetime="2026-10-26">Oct 26, 2026</time></h2>
+<ul>
+<li>Links opened from other apps now load in a tab, instead of a blank start page.</li>
+<li>If another app shares text, Ravenflight opens the first web address in it. If there is no address, it searches with your default engine. Only normal web links are opened from other apps.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.5 for Android <time datetime="2026-10-23">Oct 23, 2026</time></h2>
+<p class="folded">Includes 1.1.3 and 1.1.4, which were folded into this release and were not published on their own.</p>
+<ul>
+<li>News cards lead with a picture of the story. Pictures load as you scroll to them, and never in private tabs. If a story has no picture, you see the site&rsquo;s logo or a letter tile.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.4 for Android <time datetime="2026-10-23">Oct 23, 2026</time></h2>
+<p class="folded">Folded into 1.1.5. Not published on its own. It also includes 1.1.3.</p>
+<ul>
+<li>One top toolbar. Back, forward, and home sit beside the address field, then the tab button and the menu. The bottom bar is gone. On a narrow screen, forward moves into the menu. Long-press back to see history.</li>
+<li>A news feed on the home page, from Google News, with topic chips, pull to refresh, and more stories as you scroll. It never loads in private tabs. Turn it off in Settings or from the feed&rsquo;s own menu. The credit reads &ldquo;via Google News.&rdquo;</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.3 for Android <time datetime="2026-10-23">Oct 23, 2026</time></h2>
+<p class="folded">Folded into 1.1.5. Not published on its own.</p>
+<ul>
+<li>Six premium raven themes, $0.99 each: Midnight Murder, Blood Moon Raven, Gilded Raven, Frost Raven, Ember Raven, and Emerald Omen. You can preview a locked theme before you buy. Purchases can be restored from Settings.</li>
+<li>Google is the default search on Android. DuckDuckGo is still available. A choice you already made is kept.</li>
+<li>A new menu with a default-browser prompt, quick actions, themes, the AI assistant, find, share, new and private tabs, VPN, and Settings.</li>
+<li>Shortcut tiles use each site&rsquo;s own logo, or a letter if none is available. Logos are not saved from private tabs.</li>
+<li>A Proton VPN shortcut in the menu and in Settings. It opens the Proton VPN app, or the Play page if you don&rsquo;t have it, and shows whether a VPN is on. Ravenflight is not affiliated with Proton.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.1 for Android and desktop <time datetime="2026-10-20">Oct 20, 2026</time></h2>
+<ul>
+<li>Report an AI reply from the flag under it, or by long-pressing on Android or right-clicking on desktop. Pick a reason and add an optional comment. The reply collapses to &ldquo;You reported this reply,&rdquo; and you can show it again.</li>
+<li>Reports stay on your device. <strong>Send report to developer</strong> opens your email app with the details filled in. Nothing is sent unless you send that email.</li>
+<li>Settings lists those reports and can clear them.</li>
+<li>The chat notes that AI replies can be wrong or offensive, and that you can tap the flag to report one.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.1.0 for Android and desktop <time datetime="2026-10-19">Oct 19, 2026</time></h2>
+<ul>
+<li>The ad and tracker blocker covers more sites, about 350. A badge on the shield shows how many were blocked on the page. Tap the shield to allow ads on that site, and reset the list in Settings.</li>
+<li>Dark mode for websites: Off, On, or Follow system.</li>
+<li>Raven themes for the browser: Midnight Raven, Crimson Raven, Storm Grey, and Emerald Night.</li>
+<li>Start-page wallpapers: four night-sky pictures, or your own photo.</li>
+<li>Optional Grok assistant, using your own key: chat, clear the chat, and ask about the page you are reading. Asking about the page is off in private tabs unless you turn it on.</li>
+</ul>
+</article>
+
+<article class="release">
+<h2>1.0.0 <time datetime="2026-10-19">Oct 19, 2026</time></h2>
+<ul>
+<li>First release: tabs, private tabs, bookmarks, history, downloads, a start page, a choice of search engine, the built-in blocker, and settings.</li>
+</ul>
+</article>
+</main>
+<footer class="site-footer">&copy; 2026 Jesse Raines &middot; Ravenflight</footer>
+</body>
+</html>
