@@ -133,8 +133,13 @@ h1{font-size:clamp(2.1rem,6vw,3.2rem);margin:8px 0 6px;letter-spacing:.02em;colo
 .tag{font-size:clamp(1.05rem,2.5vw,1.2rem);color:#c3b4e8;margin:0 auto 18px;max-width:36rem}
 .intro{max-width:40rem;margin:0 auto 22px;color:#d6cdef;font-size:1.02rem}
 .cta{margin:8px 0 6px}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:14px 16px}
+.linux-dl{display:flex;flex-direction:column;align-items:center;max-width:min(100%,22rem)}
 .btn{display:inline-block;padding:13px 26px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:650;box-shadow:0 6px 24px #7c4dff44}
 .btn:hover{background:#9670ff}
+.btn .linux-mark{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.28em;margin-right:.45em}
+.linux-links{margin:8px 0 0;font-size:.86rem}
+.linux-offer{margin:6px 0 0;font-size:.86rem;color:var(--muted);line-height:1.45}
 .cta-note{font-size:.92rem;color:var(--muted);margin:10px 0 0}
 .meta-line{font-size:.88rem;color:#8f83ad;margin:18px 0 0}
 section{margin:42px 0}
@@ -229,7 +234,29 @@ a{color:var(--link)}
     <p class="tag">A fast, private web browser with a midnight-dark raven look.</p>
     <p class="intro">Ravenflight keeps your browsing on your device, blocks the ads and trackers that slow pages down, and lets you style the browser your way. No account, no sign-up, and no analytics.</p>
     <div class="cta">
-      <a class="btn" href="mailto:applegate5759@gmail.com?subject=Ravenflight%20tester">Join the beta</a>
+      <div class="cta-row">
+        <a class="btn" href="mailto:applegate5759@gmail.com?subject=Ravenflight%20tester">Join the beta</a>
+        <div class="linux-dl">
+          <a class="btn" href="https://github.com/applegate5759/Ravenflight-/releases/tag/linux-v1.1.15">
+            <svg class="linux-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <ellipse cx="9" cy="21.6" rx="2.5" ry="1.15" fill="#f0b429"/>
+              <ellipse cx="15" cy="21.6" rx="2.5" ry="1.15" fill="#f0b429"/>
+              <path fill="#1a0a2e" d="M5.1 12.4c-2.3 1.1-3 4-1.5 5.6 1.5-.2 3 .2 4 1.1.1-2.2-.7-5-2.5-6.7z"/>
+              <path fill="#1a0a2e" d="M18.9 12.4c2.3 1.1 3 4 1.5 5.6-1.5-.2-3 .2-4 1.1-.1-2.2.7-5 2.5-6.7z"/>
+              <ellipse cx="12" cy="14.4" rx="6" ry="6.8" fill="#1a0a2e"/>
+              <circle cx="12" cy="7.1" r="4.15" fill="#1a0a2e"/>
+              <ellipse cx="12" cy="15.3" rx="3.35" ry="4.35" fill="#f7f4ff"/>
+              <circle cx="10.35" cy="6.7" r=".85" fill="#f7f4ff"/>
+              <circle cx="13.65" cy="6.7" r=".85" fill="#f7f4ff"/>
+              <circle cx="10.5" cy="6.85" r=".4" fill="#1a0a2e"/>
+              <circle cx="13.8" cy="6.85" r=".4" fill="#1a0a2e"/>
+              <path fill="#f0b429" d="M10.7 8.3h2.6L12 10.15z"/>
+            </svg>Download for Linux
+          </a>
+          <p class="linux-links"><a href="https://github.com/applegate5759/Ravenflight-/releases/download/linux-v1.1.15/Ravenflight-1.1.15-x86_64.AppImage">AppImage</a> &middot; <a href="https://github.com/applegate5759/Ravenflight-/releases/download/linux-v1.1.15/ravenflight_1.1.15_amd64.deb">.deb</a></p>
+          <p class="linux-offer">A present for GNU/FOSS: all premium themes free on Linux.</p>
+        </div>
+      </div>
       <p class="cta-note">Coming to Google Play. Want to help test it early? Email me and I&rsquo;ll add you to the closed test.</p>
     </div>
     <p class="meta-line">Android &middot; <code style="background:#3a1528;padding:1px 6px;border-radius:4px;font-size:.9em">com.ravenflight.browser</code> &middot; v1.1.6 (closed testing) &middot; Default search: Google</p>
