@@ -138,7 +138,8 @@ h1{font-size:clamp(2.1rem,6vw,3.2rem);margin:8px 0 6px;letter-spacing:.02em;colo
 .btn{display:inline-block;padding:13px 26px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:650;box-shadow:0 6px 24px #7c4dff44}
 .btn:hover{background:#9670ff}
 .btn .linux-mark{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.28em;margin-right:.45em}
-.linux-links{margin:8px 0 0;font-size:.86rem}
+.linux-links{margin:8px 0 0;font-size:.86rem;display:flex;flex-wrap:wrap;justify-content:center;row-gap:.15rem}
+.linux-links span:not(:last-child)::after{content:" · ";color:var(--text)}
 .linux-offer{margin:6px 0 0;font-size:.86rem;color:var(--muted);line-height:1.45}
 .cta-note{font-size:.92rem;color:var(--muted);margin:10px 0 0}
 .meta-line{font-size:.88rem;color:#8f83ad;margin:18px 0 0}
@@ -253,7 +254,7 @@ a{color:var(--link)}
               <path fill="#f0b429" d="M10.7 8.3h2.6L12 10.15z"/>
             </svg>Download for Linux
           </a>
-          <p class="linux-links"><a href="https://github.com/applegate5759/Ravenflight-/releases/download/linux-v1.1.15/Ravenflight-1.1.15-x86_64.AppImage">AppImage</a> &middot; <a href="https://github.com/applegate5759/Ravenflight-/releases/download/linux-v1.1.15/ravenflight_1.1.15_amd64.deb">.deb</a></p>
+          <p class="linux-links"><span><a href="https://github.com/applegate5759/Ravenflight-/releases/download/linux-v1.1.15/Ravenflight-1.1.15-x86_64.AppImage">AppImage</a></span><span><a href="https://github.com/applegate5759/Ravenflight-/releases/download/linux-v1.1.15/ravenflight_1.1.15_amd64.deb">.deb</a></span><span><a href="https://github.com/applegate5759/Ravenflight-/releases/download/linux-v1.1.15/ravenflight-1.1.15-x86_64.pkg.tar.zst">Arch (pacman)</a></span><span><a href="https://github.com/applegate5759/Ravenflight-/releases/download/linux-v1.1.15/ravenflight-1.1.15.x86_64.rpm">Fedora / openSUSE (.rpm)</a></span></p>
           <p class="linux-offer">A present for GNU/FOSS: all premium themes free on Linux.</p>
         </div>
       </div>
